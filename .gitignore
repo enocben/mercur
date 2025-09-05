@@ -12,6 +12,9 @@ node_modules
 !.yarn/versions
 .pnp.*
 
+# Static files
+apps/backend/static/*
+
 # Testing
 coverage
 
@@ -39,3 +42,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# IDE
+.idea

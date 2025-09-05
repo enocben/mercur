@@ -10,7 +10,7 @@
     "skipDefaultLibCheck": true,
     "declaration": false,
     "sourceMap": false,
-    "inlineSourceMap": true,
+    "inlineSourceMap": false,
     "outDir": "./.medusa/server",
     "rootDir": "./",
     "baseUrl": ".",

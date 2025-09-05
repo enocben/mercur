@@ -139,7 +139,7 @@ export const POST = async (
       data: {
         data: validatedBody,
         type: 'product',
-        submitter_id: req.auth_context.actor_id
+        submitter_id: req.auth_context.actor_id,
       },
       additional_data
     }

@@ -1,11 +1,11 @@
 import { MedusaService } from "@medusajs/framework/utils";
 
 import { CommissionRate, CommissionRule } from "./models";
-import { CommissionLine } from "./models/commission_line";
+import { CommissionLine } from './models';
 import {
   CommissionCalculationContext,
   CommissionRuleDTO,
-} from "@mercurjs/framework";
+} from '@mercurjs/framework';
 
 class CommissionModuleService extends MedusaService({
   CommissionRate,
