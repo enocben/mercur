@@ -18,6 +18,7 @@
   "scripts": {
     "mercur-exec": "turbo run dev",
     "dev": "turbo run dev",
+    "start": "cd apps/backend && medusa start --types=false",
     "build": "turbo run build",
     "format": "turbo run format",
     "lint": "turbo run lint",
@@ -31,6 +32,9 @@
   },
   "dependencies": {
     "ajv": "^8.12.0",
+    "zod": "^3.23.0"
+  },
+  "resolutions": {
     "zod": "^3.23.0"
   }
 }
