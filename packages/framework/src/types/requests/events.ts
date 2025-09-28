@@ -12,11 +12,13 @@ export enum RequestUpdated {
 }
 
 export enum ProductCategoryRequestUpdatedEvent {
+  CREATED = "requests.product_category.created",
   ACCEPTED = "requests.product_category.accepted",
   REJECTED = "requests.product_category.rejected",
 }
 
 export enum ProductCollectionRequestUpdatedEvent {
+  CREATED = "requests.product_collection.created",
   ACCEPTED = "requests.product_collection.accepted",
   REJECTED = "requests.product_collection.rejected",
 }
@@ -38,11 +40,13 @@ export enum SellerTeamInviteEvent {
 }
 
 export enum ProductTypeRequestUpdatedEvent {
+  CREATED = "requests.product_type.created",
   ACCEPTED = "requests.product_type.accepted",
   REJECTED = "requests.product_type.rejected",
 }
 
 export enum ProductTagRequestUpdatedEvent {
+  CREATED = "requests.product_tag.created",
   ACCEPTED = "requests.product_tag.accepted",
   REJECTED = "requests.product_tag.rejected",
 }
