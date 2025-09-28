@@ -1,13 +1,21 @@
+import { acceptProductRequestWorkflow } from '#/workflows/requests/workflows'
+
 import { SubscriberArgs, SubscriberConfig } from '@medusajs/framework'
-import { ContainerRegistrationKeys } from '@medusajs/framework/utils'
+import { ContainerRegistrationKeys, Modules } from '@medusajs/framework/utils'
 
-import { CONFIGURATION_MODULE } from '@mercurjs/configuration'
-import { ConfigurationModuleService } from '@mercurjs/configuration'
-import { ConfigurationRuleType } from '@mercurjs/framework'
-import { ProductRequestUpdatedEvent } from '@mercurjs/framework'
+import {
+  CONFIGURATION_MODULE,
+  ConfigurationModuleService
+} from '@mercurjs/configuration'
+import {
+  ConfigurationRuleType,
+  ProductRequestUpdatedEvent
+} from '@mercurjs/framework'
+import {
+  OnesignalNotificationTemplates,
+  OnesignalSegmentsTo
+} from '@mercurjs/onesignal'
 import { REQUESTS_MODULE, RequestsModuleService } from '@mercurjs/requests'
-
-import { acceptProductRequestWorkflow } from '../workflows/requests/workflows'
 
 export default async function productRequestCreatedHandler({
   event,
@@ -18,6 +26,7 @@ export default async function productRequestCreatedHandler({
   const configuration =
     container.resolve<ConfigurationModuleService>(CONFIGURATION_MODULE)
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER)
+  const notificationModule = container.resolve(Modules.NOTIFICATION)
 
   const request = await service.retrieveRequest(id)
 
@@ -39,6 +48,16 @@ export default async function productRequestCreatedHandler({
       }
     })
   }
+
+  await notificationModule.createNotifications({
+    to: OnesignalSegmentsTo.ADMIN,
+    channel: 'push',
+    template: OnesignalNotificationTemplates.NEW_PRODUCT,
+    content: {
+      text: 'New Product',
+      subject: 'New Product'
+    }
+  })
 }
 
 export const config: SubscriberConfig = {
