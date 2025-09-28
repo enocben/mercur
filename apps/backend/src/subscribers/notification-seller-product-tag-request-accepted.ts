@@ -1,5 +1,4 @@
 import { SubscriberArgs, SubscriberConfig } from '@medusajs/framework'
-
 import { ProductTagRequestUpdatedEvent } from '@mercurjs/framework'
 import { sendVendorUIRequestNotification } from '@mercurjs/requests'
 

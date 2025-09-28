@@ -1,3 +1,7 @@
+import { fetchSellerByAuthActorId } from '#/shared/infra/http/utils'
+import { assignBrandToProductWorkflow } from '#/workflows/brand/workflows'
+import { createProductRequestWorkflow } from '#/workflows/requests/workflows'
+
 import {
   AuthenticatedMedusaRequest,
   MedusaRequest,
@@ -5,9 +9,6 @@ import {
 } from '@medusajs/framework'
 import { ContainerRegistrationKeys } from '@medusajs/framework/utils'
 
-import { fetchSellerByAuthActorId } from '../../../shared/infra/http/utils'
-import { assignBrandToProductWorkflow } from '../../../workflows/brand/workflows'
-import { createProductRequestWorkflow } from '../../../workflows/requests/workflows'
 import {
   VendorCreateProductType,
   VendorGetProductParamsType
@@ -139,7 +140,7 @@ export const POST = async (
       data: {
         data: validatedBody,
         type: 'product',
-        submitter_id: req.auth_context.actor_id,
+        submitter_id: req.auth_context.actor_id
       },
       additional_data
     }
