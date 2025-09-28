@@ -81,9 +81,19 @@ module.exports = defineConfig({
             options: {
               channels: ['feed', 'seller_feed']
             }
+          },
+          {
+            resolve: '@mercurjs/onesignal',
+            id: 'onesignal',
+            options: {
+              channels: ['push'],
+              url: process.env.ONESIGNAL_URL,
+              app_id: process.env.ONESIGNAL_APP_ID,
+              secret_key: process.env.ONESIGNAL_SECRET_KEY
+            }
           }
         ]
       }
-    },
+    }
   ]
 })
