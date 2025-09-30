@@ -25,7 +25,12 @@ export const requestsMiddlewares: MiddlewareRoute[] = [
   {
     method: ['POST'],
     matcher: '/admin/requests/:id',
-    middlewares: [validateAndTransformBody(AdminReviewRequest)]
+    middlewares: [validateAndTransformBody(AdminReviewRequest), 
+      validateAndTransformQuery(
+        AdminGetRequestsParams,
+        adminRequestsConfig.retrieve
+      )
+    ]
   },
   {
     method: ['GET'],

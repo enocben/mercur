@@ -55,7 +55,7 @@ export async function POST(
     data: [request]
   } = await query.graph({
     entity: 'request',
-    fields: ['id', 'type', 'data', 'submitter_id'],
+    fields: req.queryConfig.fields,
     filters: {
       id: req.params.id,
       status: 'pending'
@@ -81,7 +81,8 @@ export async function POST(
 
     return res.json({
       id: req.params.id,
-      status: 'rejected'
+      status: 'rejected',
+      request
     })
   }
 
@@ -99,7 +100,7 @@ export async function POST(
       id: req.params.id,
       reviewer_id: req.auth_context.actor_id,
       data: request.data,
-      ...req.validatedBody
+      ...req.validatedBody,
     },
     throwOnError: true
   })
@@ -108,7 +109,8 @@ export async function POST(
     id: req.params.id,
     status: 'accepted',
     createdResourceType: request.type,
-    createdResource
+    createdResource,
+    request: {...request, data: createdResource}
   })
 }
 
