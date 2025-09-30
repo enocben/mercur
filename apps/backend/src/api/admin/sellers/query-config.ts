@@ -6,7 +6,20 @@ export const adminSellerFields = [
   'name',
   'handle',
   'description',
-  'photo'
+  'photo',
+  'store_status',
+  'email',
+  'photo',
+  '*members',
+  'created_at',
+  'updated_at',
+  'phone',
+  'address_line',
+  'city',
+  'country_code',
+  'postal_code',
+  'state',
+  'tax_id'
 ]
 
 export const adminSellerQueryConfig = {

@@ -30,7 +30,10 @@ export const createProductRequestWorkflow = createWorkflow(
   }) {
     const productPayload = transform(input, (input) => ({
       ...input.data.data,
-      status: input.data.data.status === 'draft' ? 'draft' : 'proposed'
+      // Keep 'draft' as is, but replace 'published' with 'proposed'
+      status: input.data.data.status === 'draft' ? 'draft' : 
+              input.data.data.status === 'published' ? 'proposed' : 
+              input.data.data.status
     }))
 
     const product = createProductsWorkflow.runAsStep({
