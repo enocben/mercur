@@ -46,6 +46,5 @@ export const POST = async (
       container: req.scope,
       input: { ...req.validatedBody, id: req.params.id }
     })
-
-  res.json({ configuration_rule })
+  res.json({ configuration_rule: configuration_rule[0] })
 }
